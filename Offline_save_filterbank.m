@@ -1,9 +1,8 @@
 %% SMF Offline filter bank save
-
 %
-% This program realizes the estimation of the offline filter bank based on
+% This program estimates the offline filter bank based on
 % the signal's covariance matrix (estimated by running "Offline_save_Zcall.m"
-% and a simulated sea nois which is a white noise with a -6dB/dec slope.
+% and a simulated sea noise which is a white noise with a -6dB/dec slope.
 %
 % ------------------------------------------------------------------------%
 % Author: Lea Bouffaut, PhD

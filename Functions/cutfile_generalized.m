@@ -28,13 +28,13 @@
 
 function [xcut, fs,N_heure_deb,N_heure_fin]= cutfile_generalized(name, heure, duree)
 
-vers = strcmp(version('-release'),'2016a');
-vers2 = strcmp(version('-release'),'2015b');
-if or(vers,vers2) == 1 
+% vers = strcmp(version('-release'),'2016a');
+% vers2 = strcmp(version('-release'),'2015b');
+% if or(vers,vers2) == 1 
     [x,fs] = audioread(name);
-else
-    [x,fs] = wavread(name);
-end
+% else
+%     [x,fs] = wavread(name);
+% end
 
 x = x'; M = length(x);
 % T_24h = (M-1)/fs; % Duree totale de l'enregistrement en secondes
