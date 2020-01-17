@@ -3,21 +3,6 @@
 % This program estimates the offline filter bank based on
 % the signal's covariance matrix (estimated by running "Offline_save_Zcall.m"
 % and a simulated sea noise which is a white noise with a -6dB/dec slope.
-%
-% ------------------------------------------------------------------------%
-% Author: Lea Bouffaut, PhD
-% Naval Academy Research Institute, Brest, France.
-% Date: 10-30-2019
-% 
-% Full description of the method's theory is described in
-%
-%       L. Bouffaut, R. Dreo, V. Labat, A. Boudraa and G. Barruol 
-%       'Passive stochastic matched filter for antarctic blue whale call
-%       detection,' in J. Acoust. Soc. Am, 144(2) (2018).
-%
-% and any use of this material should refer accordingly.
-% ------------------------------------------------------------------------%
-
 
 clearvars    %MATLAB2016
 close all
