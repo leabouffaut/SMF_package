@@ -1,7 +1,8 @@
 %% SMF Offline filter bank save
 %
 % This program estimates the offline filter bank based on
-% the signal's covariance matrix (estimated by running "Offline_save_Zcall.m"
+% the signal's covariance matrix (estimated by running
+% "Offline_save_Zcall.m")
 % and a simulated sea noise which is a white noise with a -6dB/dec slope.
 
 clearvars    %MATLAB2016
@@ -46,7 +47,6 @@ noise = real(ifft(noise)); % Back to time domain
 [hzcall] = SMF_GEP(vecs, covs, covn, Qmax);
 
 %% Plot filter spectrum
-
 % The optimal filter is the reference signal
 [Hopt,nu] = leafft(s_whale,fs);
 Hopt_filt = sgolayfilt(Hopt,3,5);
@@ -75,10 +75,11 @@ set(gca, 'fontsize', 18);
 
 %% Save the filter bank
 h = hzcall;
-
-if strcmp(Save,'On') == 1
-save('Offline_saved/filtre_lambda.mat', 'h')
-disp('Matrix saved in: Offline_saved/filtre_lambda.mat')
-else disp('Matrix not saved')
+switch Save
+    case 'On'
+        save('Offline_saved/filtre_lambda.mat', 'h')
+        disp('Matrix saved in: Offline_saved/filtre_lambda.mat')
+    case 'Off' 
+        disp('Matrix not saved')
+    otherwise warning('Uknown Save command - matrix not saved')
 end
-

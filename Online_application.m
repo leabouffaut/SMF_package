@@ -1,16 +1,5 @@
 %% SMF Online application example
 %
-% Author: Lea Bouffaut, PhD
-% Naval Academy Research Institute, Brest, France.
-% Date: 10-30-2019
-% 
-% Full description of the method's theory is described in
-%
-%       L. Bouffaut, R. Dreo, V. Labat, A. Boudraa and G. Barruol 
-%       'Passive stochastic matched filter for antarctic blue whale call
-%       detection,' in J. Acoust. Soc. Am, 144(2) (2018).
-%
-% and any use of this material should refer accordingly.
 %
 % Before to be able to run the online application of the SMF:
 % (1) run 'Offline_save_Z-call.m' to simulate the signal and estimate its 
@@ -18,24 +7,11 @@
 % (2) run 'Offline_save_filterbank.m' to design the filter bank that
 %     maximizes the output SNR
 %
-% For easy use, required matrices are already saved in the "Offline_saved"
-% folder.
-% An example observation recording containing high SNR Z-calls is added to
-% the 'SMF_package' folder.
-%
-% ------------------------------------------------------------------------%
-% Author: Lea Bouffaut, PhD
-% Naval Academy Research Institute, Brest, France.
-% Date: 10-30-2019
-% 
-% Full description of the method's theory is described in
-%
-%       L. Bouffaut, R. Dreo, V. Labat, A. Boudraa and G. Barruol 
-%       'Passive stochastic matched filter for antarctic blue whale call
-%       detection,' in J. Acoust. Soc. Am, 144(2) (2018).
-%
-% and any use of this material should refer accordingly.
-% ------------------------------------------------------------------------%
+% For easy use, required matrices are already saved in the Offline_saved 
+% folder. A small toy dataset with ABW calls at various SNR is provided 
+% (RR44_2013_D151.wav). It consists of a 24h record from OBS RR44 deployed 
+% during the RHUM-RUM experiment.
+
 
 clearvars    %MATLAB2016
 close all
@@ -51,10 +27,10 @@ overlap = 98; % \% de recouvrement
 % Load file
 name = 'RR44_2013_D151.wav';
 padding =  1; %(min)
-duree =  10 + padding; %(min)
-heure = 12.34;
+duration =  10 + padding; %(min)
+begin_time = 12.34;
 
-[x, fs] = cutfile_generalized(name, heure, duree);
+[x, fs] = cutfile_generalized(name, begin_time, duration);
 Tx = (length(x)-1)/fs; % Signal duration (s)
 tx = 0:1/fs:Tx; % temporal axis (s)
 M = length(x);
@@ -62,11 +38,10 @@ M = length(x);
 % Spectrogram
 [stft,f,t,p] = spectrogram(x/max(x),hann(fft_size),round((overlap/100)*fft_size),fft_size,fs);
 p = 10*log10(p);
-p = p+120; p = (p/max(max(p)))*80; % adjust for specrogram plot, balance colors
-    
+ 
 % figure
 % image(t/60,f,p)
-% axis xy; axis tight; %colormap gray 
+% axis xy; axis tight;
 % xlabel('Time (min)');
 % ylabel('Frequency (Hz)');
 
@@ -103,14 +78,14 @@ Q = zeros(1,M); % <=> Q !!
 z_0  = zeros(1,M+N-1);
 
 % if even or odd
-if mod(N,2)==0,
+if mod(N,2)==0
     z_0(N/2:end-N/2) = x;
 else
     z_0((N+1)/2:end-(N-1)/2) = x;
 end
 
 % Application of the SMF filters
-for n=1:M,
+for n=1:M
     % Window the observation (we're looking at the center sample)
     zm = z_0(n:n+N-1);
 
@@ -155,13 +130,13 @@ end
 %% Remove the 1 minute padding
 % Spectrogram
 debspc = find(t/60>= padding/2,1);
-finspc = find(t/60>=duree-padding/2,1);
+finspc = find(t/60>=duration-padding/2,1);
 p = p(:,debspc:finspc);
-t = linspace(0,duree,length(p));
+t = linspace(0,duration,length(p));
 
-% Decoupe signaux temporels pour enlever effet fenetre
+% Time vectors
 deb = find(tx/60>= padding/2,1);
-fin = find(tx/60>=duree-padding/2,1);
+fin = find(tx/60>=duration-padding/2,1);
 
 Tx_new = Tx - padding*60;
 tx_new = (0:1/fs:Tx_new-1/fs)/60;
@@ -174,9 +149,9 @@ Q = Q(deb:fin);
 CORR_SMF = CORR_SMF(deb:fin);
 CORR_MF = CORR_MF(deb:fin);
 
-%% Affichage 
+%% Plot
+% hand annotation of the calls 
 pres_zcall_time = [0.57 1.55 2.72 3.87 6.17 7.71 8.86 9.89];
-%pres_zcall_time = [-0.1 1 2 3.15 4.26 6.6 8.2 9.31]+0.1; % RR43
 corr_shift = 0.22;
 pres_zcall_time = pres_zcall_time+0.18;
 
@@ -187,10 +162,8 @@ fig = figure;
 subplot(4,1,1)
 image(t/60,f,p);
 axis xy; axis tight; %colormap gray 
-%xlabel('Time (min)');
-%ylim([2 50])
 ylabel('Freq. (Hz)');
-title('(a)') % SPECTROGRAMME
+title('(a)')
 set(gca, 'fontsize', fontsize);
 
 subplot(4,1,2)
@@ -199,7 +172,6 @@ hold on
 plot(tx_new,(s/max(x_filt)),'Color',[0.9290 0.6940 0.1250])
 plot(pres_zcall_time,1.1*ones(size(pres_zcall_time)),'v','Color',[0.8500 0.3250 0.0980]) % marqueurs
 grid on
-%xlabel('Time (min)')
 ylabel('Ampli. Norm.')
 leg1 = legend(' $z_{[15 - 30]Hz}(k)$ ','$\widetilde{s}_{Q[k]}(k)$','Location','South');
 set(leg1,'Interpreter','latex');
@@ -210,36 +182,26 @@ set(gca, 'fontsize', fontsize);
 box on
 
 subplot(4,1,3)
-title('(c)') % MF Classique
+title('(c)')
 hold on 
-% plot(tx_new,(CORR_MF_interm))
 plot(tx_new,(CORR_MF))
 plot(pres_zcall_time,corr_shift*ones(size(pres_zcall_time)),'v','Color',[0.8500 0.3250 0.0980]) % marqueurs
 xlim([0 Tx_new/60]) ; grid on
-%ylim([0 0.002])
-%xlabel('Time (min)')
 ylabel('MF')
 set(gca, 'fontsize', fontsize);
 ylim([0 0.25])
 box on
 
 subplot(4,1,4)
-title('(c)') % CORR_SMF 
+title('(c)')
 hold on
-% plot(tx_new, CORR_SMF_interm)
 plot(tx_new, CORR_SMF)
 plot(pres_zcall_time,0.22*ones(size(pres_zcall_time)),'v','Color',[0.8500 0.3250 0.0980]) %marqueurs
 xlim([0 Tx_new/60]) ; grid on
-%ylim([0 0.2])
 xlabel('Time (min)')
 ylabel('SMF + MF')
 hold on
 ylim([0 0.25])
 set(gca, 'fontsize', fontsize);
 box on
-
-% Nom = ['/Users/Lea/Documents/03. REDACTION/00_PhD_Thesis/Chapter3/PICTURES/' name ];
-% tightfig;
-% orient(fig,'portrait')
-% saveas(gcf,Nom,'pdf')
 
