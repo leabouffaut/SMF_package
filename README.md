@@ -3,7 +3,7 @@ The SMF package is a package includes all code in Matlab for the use and applica
 
 Author: Léa Bouffaut, Ph.D. [Personal website](https://leabouffaut.home.blog) | [Researchgate](https://www.researchgate.net/profile/Lea_Bouffaut) | [e-mail](lea.bouffaut@ntun.no)
 
-Affiliation: Instiut de Recherche d l'Ecole Navale (Brest, France)
+Affiliation: Instiut de Recherche de l'Ecole Navale (Brest, France)
 
 The method is fully described in:
 
