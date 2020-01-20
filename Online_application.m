@@ -56,6 +56,9 @@ N = length(covs);
 med_win_size = 201; 
 
 % Observation noise estimation preprocessing + SNR estimation
+% WARNING: In this function, the SNR is estimated for the Z-call frequency
+% band, if applied to an other signal, change frequency boundary inside the
+% function zcall_rsb_calc
 [covn, Qmax,snr] = SMF_noise_rsb_preprocess_median_phase(x,fs,fft_size,overlap,N,med_win_size);
 
 %% Generalized Eigenvalue Problem

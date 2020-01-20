@@ -19,27 +19,13 @@
 %   - covn : Online-estimated noise covariance matrix
 %   - Qmax : NMax number of filter
 %   - snr : time-varying snr (dB)
-%
-% ------------------------------------------------------------------------%
-% Author: Lea Bouffaut, PhD
-% Naval Academy Research Institute, Brest, France.
-% Date: 10-30-2019
-% 
-% Full description of the method's theory is described in
-%
-%       L. Bouffaut, R. Dreo, V. Labat, A. Boudraa and G. Barruol 
-%       'Passive stochastic matched filter for antarctic blue whale call
-%       detection,' in J. Acoust. Soc. Am, 144(2) (2018).
-%
-% and any use of this material should refer accordingly. Part of the code
-% was written by Gregory Julien, PhD (2010).
-% ------------------------------------------------------------------------%
+
 
 
 function [covn, Qmax,snr] = SMF_noise_rsb_preprocess_median_phase(x, fs, fft_size,overlap, N,med_win_size)
 % Time parameters
-Tx = (length(x)-1)/fs; %(s) Duree du signal
-tx = 0:1/fs:Tx; % axe de temps (s)
+Tx = (length(x)-1)/fs; %(s) duration of the observation
+tx = 0:1/fs:Tx; % temporal axis
 
 % STFT calclation
 [stft,f,t,~] = spectrogram(x,hann(fft_size),round((overlap/100)*fft_size),fft_size,fs);
@@ -54,6 +40,9 @@ end
 
 
 % SNR estimation
+% WARNING: In this function, the SNR is estimated for the Z-call frequency
+% band, if applied to an other signal, change frequency boundary inside the
+% function zcall_rsb_calc
 snr = zcall_rsb_calc(stft,stft_med,f,t,tx,N);
 
 % estimation of the noise covariance matrix

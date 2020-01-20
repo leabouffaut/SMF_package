@@ -1,6 +1,7 @@
 % h = SM_GEP(vecs, covs, covb, Qmax)
 %
-% Generation of the SMF filter bank based on the signal and noise covariances matrices
+% Generation of the SMF filter bank based on the signal and noise 
+% covariances matrices.
 % The filters are the one maximizing the output SNR, wich is equivalent to
 % solving the Generalized eigenvalue problem putting in relation the signal
 % and noise covariance matrices
@@ -13,21 +14,8 @@
 %
 % OUTPUTS
 %   - h : SNR-maximazing filter bank
-%
-% ------------------------------------------------------------------------%
-% Author: Lea Bouffaut, PhD
-% Naval Academy Research Institute, Brest, France.
-% Date: 10-30-2019
 % 
-% Full description of the method's theory is described in
-%
-%       L. Bouffaut, R. Dreo, V. Labat, A. Boudraa and G. Barruol 
-%       'Passive stochastic matched filter for antarctic blue whale call
-%       detection,' in J. Acoust. Soc. Am, 144(2) (2018).
-%
-% and any use of this material should refer accordingly. Part of the code
-% was written by Gregory Julien, PhD (2010).
-% ------------------------------------------------------------------------%
+% Part of this code originally written by G. Julien, PhD (2010)
 
 
 function h = SMF_GEP(vecs, covs, covb, Qmax)
