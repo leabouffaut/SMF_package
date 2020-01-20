@@ -2,6 +2,7 @@
 The SMF package is a package includes all code in Matlab for the use and application of the passive stochastic matched filter to the detection of Antarctic blue whale (ABW) calls. 
 
 Author: Léa Bouffaut, Ph.D.
+
 Affiliation: Instiut de Recherche d l'Ecole Navale (Brest, France)
 
 The method is fully described in:
@@ -21,9 +22,9 @@ and any use of this material should refer accordingly. Part of the SMF code was 
 A small toy dataset with ABW calls at various SNR is provided (<i>RR44_2013_D151.wav</i>). It consists of a 24h record from the Ocean Bottom Seismomter RR44 deployed during the [RHUM-RUM](http://www.rhum-rum.net/en/) experiment, in the western Indian Ocean. All recordings are hosted and can be downloaded from [RESIF](https://www.resif.fr/) web services.
 
 RHUM-RUM on Github: 
-Global project: https://github.com/rhum-rum
-OBS orientation by John-Robert Scholz: https://gitlab.com/johnrobertscholz/ppol
-OBS for ship noise by Alister Trabattoni: https://github.com/atrabattoni/obsea
+- Global project: https://github.com/rhum-rum
+- OBS orientation by John-Robert Scholz: https://gitlab.com/johnrobertscholz/ppol
+- OBS for ship noise by Alister Trabattoni: https://github.com/atrabattoni/obsea
 
 RHUM-RUM on researchgate https://www.researchgate.net/project/RHUM-RUM
 
