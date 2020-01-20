@@ -1,4 +1,4 @@
-# SMF Package
+# Passive matched filter for the detection of Antarctic blue whales calls
 The SMF package is a package includes all code in Matlab for the use and application of the passive stochastic matched filter to the detection of Antarctic blue whale (ABW) calls. 
 
 Author: Léa Bouffaut, Ph.D. [Personal website](https://leabouffaut.home.blog) | [Researchgate](https://www.researchgate.net/profile/Lea_Bouffaut)
