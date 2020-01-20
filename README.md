@@ -1,9 +1,9 @@
 # SMF Package
 The SMF package is a package includes all code in Matlab for the use and application of the passive stochastic matched filter to the detection of Antarctic blue whale (ABW) calls. 
 
-Author: Léa Bouffaut, Ph.D. [Personal website](https://leabouffaut.home.blog) | [Researchgate](https://www.researchgate.net/profile/Lea_Bouffaut) | [e-mail](lea.bouffaut@ntun.no)
+Author: Léa Bouffaut, Ph.D. [Personal website](https://leabouffaut.home.blog) | [Researchgate](https://www.researchgate.net/profile/Lea_Bouffaut)
 
-Affiliation: Instiut de Recherche de l'Ecole Navale (Brest, France)
+This work was conducted during my Ph.D. financed by the french Naval Academy (Institut de Recherche de l'Ecole Navale - Brest, France).
 
 The method is fully described in:
 
