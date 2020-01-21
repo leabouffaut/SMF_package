@@ -31,7 +31,7 @@ RHUM-RUM on Git:
 RHUM-RUM on [Researchgate](https://www.researchgate.net/project/RHUM-RUM) 
 
 # How to run the code
-![SMF Scheme](https://github.com/leabouffaut/SMF_package/blob/master/Passive_SMF_scheme.png)
+![SMF Scheme](https://github.com/leabouffaut/SMF_package/blob/master/Passive_SMF_scheme_new.png)
 The SMF can be decomposed into two components: the first, <i>offline</i> estimates the set of linear filters  and, the second <i>online</i> (close to real-time, the recording is analyzed on a sliding window) selects the appropriate filter to apply at each time. In that sense the SMF is a time-varying linear filter, that is applied to maximize the output SNR.
 To run the code:
 1. Run <i>Offline_save_Zcall</i> (Offline part 1/2) to simulate the ABW signal and its covariance matrix;
