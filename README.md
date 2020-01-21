@@ -28,7 +28,7 @@ RHUM-RUM on Git:
 - [OBS orientation](https://gitlab.com/johnrobertscholz/ppol) by John-Robert Scholz
 - [OBS for ship noise](https://github.com/atrabattoni/obsea) by Alister Trabattoni
 
-RHUM-RUM on [Researchgate](https://www.researchgate.net/project/RHUM-RUM)
+RHUM-RUM on [Researchgate](https://www.researchgate.net/project/RHUM-RUM) 
 
 # How to run the code
 ![SMF Scheme](https://github.com/leabouffaut/SMF_package/blob/master/Passive_SMF_scheme.png)
