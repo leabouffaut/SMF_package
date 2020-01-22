@@ -21,7 +21,7 @@ and any use of this material should refer accordingly. Part of the SMF code was 
 1. A 24h recording with ABW calls ((<i>RR44_2013_D151.wav</i>).
 
 # Data
-A small toy dataset with ABW calls at various SNR is provided (<i>RR44_2013_D151.wav</i>). It consists of a 24h record from the Ocean Bottom Seismomter RR44 deployed during the [RHUM-RUM](http://www.rhum-rum.net/en/) experiment, in the western Indian Ocean. All recordings are freely available from the [RESIF](http://seismology.resif.fr) data centre under the code name YV (https://doi.org/10.15778/RESIF.YV2011).
+A small toy dataset with ABW calls at various SNR is provided (<i>RR44_2013_D151.wav</i>). It consists of a 24h record from the Ocean Bottom Seismomter RR44 deployed during the [RHUM-RUM](http://www.rhum-rum.net/en/) experiment, in the western Indian Ocean. All recordings are freely available from the [RESIF](http://seismology.resif.fr) data center under the code name YV (https://doi.org/10.15778/RESIF.YV2011).
 
 RHUM-RUM on Git: 
 - [Global project](https://github.com/rhum-rum)
